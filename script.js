@@ -23,7 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
             appBackground.style.backgroundColor = color;
             printArea.style.backgroundColor = color;
             errorMessage.classList.add('hidden');
-            
+
+            const normalizedColor = color.toLowerCase();
+
+            if (normalizedColor === "black" || normalizedColor === "#000000") {
+                document.documentElement.style.setProperty("--shadow-color", "rgba(255, 214, 10, 0.45)");
+                document.documentElement.style.setProperty("--title-color", "rgb(255, 214, 10)");
+            } else {
+                document.documentElement.style.setProperty("--title-color", "#111");
+                document.documentElement.style.setProperty("--shadow-color", color);
+            }
+
             // Try to sync color picker if it's a hex format
             try {
                 // Convert text color to hex using a canvas if it's a valid named color
@@ -71,25 +81,25 @@ document.addEventListener('DOMContentLoaded', () => {
         // A4 size at 300 DPI
         const width = 2480;
         const height = 3508;
-        
+
         const canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
         const ctx = canvas.getContext('2d');
-        
+
         // Fill canvas with color
         ctx.fillStyle = currentColor;
         ctx.fillRect(0, 0, width, height);
-        
+
         // Convert to data URL and download
         const dataUrl = canvas.toDataURL('image/png');
         const a = document.createElement('a');
         a.href = dataUrl;
-        
+
         // Sanitize color name for filename
         const safeName = currentColor.replace(/[^a-z0-9]/gi, '_').toLowerCase();
         a.download = `color_${safeName}_highres.png`;
-        
+
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

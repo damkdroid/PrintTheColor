@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print The Colour - High Quality Color Pages</title>
+    <meta name="description" content="Enter any color name or hex code to generate and print a high-quality, full-page color block.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-background"></div>
+    <div class="glass-overlay"></div>
+    
+    <main class="container">
+        <div class="glass-card">
+            <header>
+                <h1>Print The Colour</h1>
+                <p>Generate a high-quality color page for direct printing or download.</p>
+            </header>
+
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <input type="text" id="color-input" placeholder="Enter color name or hex (e.g. #ff0055, coral)" autocomplete="off">
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="color-picker" value="#4f46e5">
+                    </div>
+                </div>
+                <div id="error-message" class="hidden">Invalid color format.</div>
+            </div>
+
+            <div class="actions">
+                <button id="btn-print" class="btn primary-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                    Print Full Page
+                </button>
+                <button id="btn-download" class="btn secondary-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download High-Res
+                </button>
+            </div>
+
+            <div id="WarningMessage">
+                <br>
+                <strong>Note:</strong> The generated color page is intended for printing. Ensure your printer settings are configured for high-quality output.
+            </div>
+        </div>
+    </main>
+
+    <!-- This element is strictly for printing -->
+    <div id="print-area"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
